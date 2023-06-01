@@ -1,8 +1,10 @@
 <?php
 
+use App\Models\Job;
 use App\Models\Blog;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Location;
 use App\Models\EmployerProfile;
 use App\Models\CandidateProfile;
 use Illuminate\Support\Facades\Route;
@@ -28,20 +30,53 @@ Route::get('/test', function () {
 
 
 
+    // get jobs of an employyer
+    // $Employer = EmployerProfile::find(7);
+    // $EmployerJobs = $Employer->jobs;
+
+    // return $EmployerJobs;
 
 
 
+    // // get jobs of a category
+    // $category = Category::find(11);
+    // $categoryJobs = $category->jobs;
 
-    // $blog = Blog::find(5);
-    // $Blogauthor = $blog->author;
-
-    // return $Blogauthor;
+    // return $categoryJobs;
 
 
-    $author = User::find(1);
-    $authorBlogs = $author->blogs;
+    // get jobs of a location
+    // $location = Location::find(85);
+    // $locationJobs = $location->jobs;
 
-    return $authorBlogs;
+    // return $locationJobs;
+
+
+
+    // get the location data of a job
+    // $job = Job::find(13);
+    // $data = $job->location;
+
+    // return $data;
+
+
+
+    // get the category data of a job
+
+    // $job = Job::find(13);
+    // $data = $job->category;
+
+    // return $data;
+
+
+
+    // get the employerProfile data of a job
+
+    // $job = Job::find(13);
+    // $data = $job->employerProfile->user;
+
+    // return $data;
+
 
 
 });
