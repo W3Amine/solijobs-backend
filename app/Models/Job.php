@@ -47,4 +47,26 @@ class Job extends Model
     }
 
 
+
+    // get the candidate profiles  data that saved this a job
+    // get the  job savers   // the job has many candidate  that did save it
+    public function savers_candidates()
+    {
+        return $this->belongsToMany(CandidateProfile::class, 'Saved_Jobs');
+    }
+
+
+
+
+    // get the candidate profiles  data that apply this  job
+    // get the  job applicants   // the job has many apply applicant candidates
+    public function applicants_candidates()
+    {
+        return $this->belongsToMany(CandidateProfile::class, 'Jobs_Applications');
+    }
+
+
+
+
+
 }

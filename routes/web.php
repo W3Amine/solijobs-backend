@@ -31,41 +31,50 @@ Route::get('/test', function () {
 
 
 
-    // get the skills data of a CandidateProfile
+    // // get the data of the  applicantes  to a job    
 
-    // $find = CandidateProfile::find(2);
-    // $data = $find->skills;
-
-    // return $data;
-
-
-    // get the Candidates Profile  data of a skill
-
-    // $find = Skill::find(10);
-    // $data = $find->candidates;
+    // $find = Job::find(10);
+    // $data = $find->applicants_candidates;
 
     // return $data;
 
 
 
+    // get the data of the  jobs  that applied  by a candidate
+    // get the applyed jobs of a candidate   
 
-    // get the jobs   data of a skill
+    // $find = CandidateProfile::find(1);
+    // $data = $find->applied_jobs;
 
-    // $find = Skill::find(10);
-    // $data = $find->jobs;
+    // return $data;
+
+
+
+    // // get the data of the  jobs  that saved  by a candidate
+    // // get the saved jobs of a candidate   
+
+    // $find = CandidateProfile::find(1);
+    // $data = $find->saved_jobs;
 
     // return $data;
 
 
 
+    // // get the data of the  savers  to a job    
 
 
-    // get the skills   data of a job
-
-    // $find = Job::find(7);
-    // $data = $find->skills;
+    // $find = Job::find(10);
+    // $data = $find->savers_candidates;
 
     // return $data;
+
+
+    // // get the data of the  savers  to a job    
+
+
+
+
+
 
 
 });

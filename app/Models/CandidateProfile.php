@@ -38,4 +38,28 @@ class CandidateProfile extends Model
 
 
 
+
+
+    // get the saved_jobs data that belong to a candidate
+    // get the saved_jobs of  candidates profile // the candidate has many saved_jobs 
+    public function saved_jobs()
+    {
+        return $this->belongsToMany(Job::class, 'Saved_Jobs');
+    }
+
+
+
+    // get the applied_jobs data that belong to a candidate
+    // get the applied_jobs of  candidates profile // the candidate has many applied_jobs 
+    public function applied_jobs()
+    {
+        return $this->belongsToMany(Job::class, 'Jobs_Applications');
+    }
+
+
+
+
+
+
+
 }
