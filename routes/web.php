@@ -1,6 +1,7 @@
 <?php
 
 use App\Models\User;
+use App\Models\Category;
 use App\Models\EmployerProfile;
 use Illuminate\Support\Facades\Route;
 
@@ -30,8 +31,11 @@ Route::get('/test', function () {
     // $profile = EmployerProfile::find(3);
     // $user = $profile->user; // Retrieve the user associated with the profile
 
+    $category = Category::find(3);
+    // $parentCategory = $category->parentCategory; // Retrieve the parent category
+    $childCategories = $category->childCategories; // Retrieve the child categories
 
 
-    return $user;
+    return $childCategories;
 
 });
