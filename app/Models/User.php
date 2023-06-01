@@ -52,4 +52,9 @@ class User extends Authenticatable
     }
 
 
+    public function candidateProfile()
+    {
+        return $this->hasOne(CandidateProfile::class);
+    }
+
 }

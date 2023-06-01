@@ -23,6 +23,11 @@ class Category extends Model
         return $this->hasMany(Category::class, 'category_parent');
     }
 
+    public function candidates()
+    {
+        return $this->hasMany(CandidateProfile::class);
+    }
+
 
 
 }

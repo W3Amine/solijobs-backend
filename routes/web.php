@@ -3,6 +3,7 @@
 use App\Models\User;
 use App\Models\Category;
 use App\Models\EmployerProfile;
+use App\Models\CandidateProfile;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,17 +26,25 @@ Route::get('/', function () {
 Route::get('/test', function () {
 
 
-    // $user = User::find(4);
-    // $profile = $user->employerProfile; // Retrieve the user's profile
-
-    // $profile = EmployerProfile::find(3);
-    // $user = $profile->user; // Retrieve the user associated with the profile
-
-    $category = Category::find(3);
-    // $parentCategory = $category->parentCategory; // Retrieve the parent category
-    $childCategories = $category->childCategories; // Retrieve the child categories
 
 
-    return $childCategories;
+    // $category = Category::find(5);
+    // $categorycandidates = $category->candidates;
+    // $categorycandidatesthenuser = $category->candidates->find(2)->user;
+
+
+    // $Candidate = CandidateProfile::find(3);
+    // $Candidateuser = $Candidate->user;
+
+    // return $Candidateuser;
+
+
+
+    $Candidate = CandidateProfile::find(3);
+    $CandidatecategoryData = $Candidate->categoryData;
+
+    return $CandidatecategoryData;
+
+
 
 });
