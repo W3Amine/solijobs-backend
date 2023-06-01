@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Blog;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\EmployerProfile;
@@ -28,23 +29,19 @@ Route::get('/test', function () {
 
 
 
-    // $category = Category::find(5);
-    // $categorycandidates = $category->candidates;
-    // $categorycandidatesthenuser = $category->candidates->find(2)->user;
-
-
-    // $Candidate = CandidateProfile::find(3);
-    // $Candidateuser = $Candidate->user;
-
-    // return $Candidateuser;
 
 
 
-    $Candidate = CandidateProfile::find(3);
-    $CandidatecategoryData = $Candidate->categoryData;
+    // $blog = Blog::find(5);
+    // $Blogauthor = $blog->author;
 
-    return $CandidatecategoryData;
+    // return $Blogauthor;
 
+
+    $author = User::find(1);
+    $authorBlogs = $author->blogs;
+
+    return $authorBlogs;
 
 
 });
