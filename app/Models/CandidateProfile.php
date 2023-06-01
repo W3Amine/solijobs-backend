@@ -27,4 +27,15 @@ class CandidateProfile extends Model
 
     }
 
+
+
+    // get the skills data that belong to a candidate
+    // get the skills of  candidates profile // the skillcandidates has many skills 
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'candidate_skill');
+    }
+
+
+
 }

@@ -3,6 +3,7 @@
 use App\Models\Job;
 use App\Models\Blog;
 use App\Models\User;
+use App\Models\Skill;
 use App\Models\Category;
 use App\Models\Location;
 use App\Models\EmployerProfile;
@@ -30,53 +31,41 @@ Route::get('/test', function () {
 
 
 
-    // get jobs of an employyer
-    // $Employer = EmployerProfile::find(7);
-    // $EmployerJobs = $Employer->jobs;
+    // get the skills data of a CandidateProfile
 
-    // return $EmployerJobs;
+    // $find = CandidateProfile::find(2);
+    // $data = $find->skills;
 
-
-
-    // // get jobs of a category
-    // $category = Category::find(11);
-    // $categoryJobs = $category->jobs;
-
-    // return $categoryJobs;
+    // return $data;
 
 
-    // get jobs of a location
-    // $location = Location::find(85);
-    // $locationJobs = $location->jobs;
+    // get the Candidates Profile  data of a skill
 
-    // return $locationJobs;
-
-
-
-    // get the location data of a job
-    // $job = Job::find(13);
-    // $data = $job->location;
+    // $find = Skill::find(10);
+    // $data = $find->candidates;
 
     // return $data;
 
 
 
-    // get the category data of a job
 
-    // $job = Job::find(13);
-    // $data = $job->category;
+    // get the jobs   data of a skill
 
-    // return $data;
-
-
-
-    // get the employerProfile data of a job
-
-    // $job = Job::find(13);
-    // $data = $job->employerProfile->user;
+    // $find = Skill::find(10);
+    // $data = $find->jobs;
 
     // return $data;
 
+
+
+
+
+    // get the skills   data of a job
+
+    // $find = Job::find(7);
+    // $data = $find->skills;
+
+    // return $data;
 
 
 });

@@ -39,4 +39,12 @@ class Job extends Model
 
 
 
+    // get the skills  data that belong to a job
+    // get the  job skill  // the job has many skills
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'job_skill');
+    }
+
+
 }
