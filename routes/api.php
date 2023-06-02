@@ -2,6 +2,9 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\v1\UserLogin;
+use App\Http\Controllers\API\v1\UserLogout;
+use App\Http\Controllers\API\v1\UserRegister;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,27 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+
+
+
+
+Route::prefix('v1')->group(function () {
+
+    Route::middleware('auth:sanctum')->group(function () {
+
+        Route::get('/user', function (Request $request) {
+            return $request->user();
+        });
+
+        Route::post('/logout', [UserLogout::class, 'logout']);
+
+
+    });
+
+
+
+    Route::post('/login', [UserLogin::class, 'login']);
+    Route::post('/register', [UserRegister::class, 'register']);
+
 });
