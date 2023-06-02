@@ -10,23 +10,31 @@ class Category extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'slug',
+        'category_parent',
+    ];
 
+    public $timestamps = true;
 
-
-    // the category BelongsTo one parent
+    // the category BelongsTo one parent 
+    // get the parent of a category
     public function parentCategory()
     {
         return $this->belongsTo(Category::class, 'category_parent');
     }
 
 
-    // the category has many children
+    // the category has many children 
+    // get the children of a category
     public function childCategories()
     {
         return $this->hasMany(Category::class, 'category_parent');
     }
 
     // the category has many candidates
+    // get the candidates that have a category
     public function candidates()
     {
         return $this->hasMany(CandidateProfile::class);
@@ -34,6 +42,7 @@ class Category extends Model
 
 
     // the category has many jobs
+    // get the jobs that belongs to this category 
     public function jobs()
     {
         return $this->hasMany(Job::class);

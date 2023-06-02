@@ -10,8 +10,12 @@ class Skill extends Model
     use HasFactory;
 
 
+    protected $fillable = [
+        'title',
+        'slug',
+    ];
 
-
+    public $timestamps = true;
 
     // get the Candidates Profile data that belong to a skill
     // get the skill candidates profile // the skill has many candidates

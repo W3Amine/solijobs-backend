@@ -10,8 +10,22 @@ class Job extends Model
     use HasFactory;
 
 
+    protected $fillable = [
+        'employer_id',
+        'category_id',
+        'location_id',
+        'title',
+        'description',
+        'salary',
+        'type',
+        'is_active',
+        'gender',
+        'experience',
+        'qualification',
+        'address',
+    ];
 
-
+    public $timestamps = true;
 
 
     // the job belongs to one employer // get the job owner data

@@ -22,7 +22,14 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phoneNumber',
+        'role',
+        'profileImage',
+        'email_verified_at',
     ];
+
+
+    public $timestamps = true;
 
     /**
      * The attributes that should be hidden for serialization.
@@ -45,20 +52,21 @@ class User extends Authenticatable
     ];
 
 
-
+    // get the employerProfile data that belongs to this user
+// get the employerProfile of this user :D
     public function employerProfile()
     {
         return $this->hasOne(EmployerProfile::class);
     }
 
-
+    // get the candidate Profile data of this user :D
     public function candidateProfile()
     {
         return $this->hasOne(CandidateProfile::class);
     }
 
 
-
+    // get all the blogs of this user
     public function blogs()
     {
         return $this->hasMany(Blog::class);

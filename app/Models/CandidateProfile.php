@@ -12,15 +12,30 @@ class CandidateProfile extends Model
     use HasFactory;
 
 
+    protected $fillable = [
+        'user_id',
+        'category_id',
+        'about',
+        'gender',
+        'birthdate',
+        'cv',
+        'experience',
+        'qualification',
+        'address',
+    ];
 
+    public $timestamps = true;
 
-
-
+    // get the user data of this candidate
+// this candidate belongs to a one user
     public function user()
     {
         return $this->belongsTo(User::class);
     }
 
+
+    // get the category data of this candidate
+    // this candidate has one category // get this category data
     public function categoryData()
     {
         return $this->belongsTo(Category::class, 'category_id');
