@@ -31,46 +31,133 @@ Route::get('/test', function () {
 
 
 
-    // // get the data of the  applicantes  to a job    
+    // TEST USER CREATE
+    // User::create([
+    //     'name' => 'imarn',
+    //     'email' => 'imran@imran.com',
+    //     'password' => 'imran2000',
+    //     'phoneNumber' => '0675845140',
+    //     'role' => 0,
 
-    // $find = Job::find(10);
-    // $data = $find->applicants_candidates;
+    // ]);
 
-    // return $data;
-
-
-
-    // get the data of the  jobs  that applied  by a candidate
-    // get the applyed jobs of a candidate   
-
-    // $find = CandidateProfile::find(1);
-    // $data = $find->applied_jobs;
-
-    // return $data;
+    // GET ALL USERS
+    // return User::all();
 
 
 
-    // // get the data of the  jobs  that saved  by a candidate
-    // // get the saved jobs of a candidate   
-
-    // $find = CandidateProfile::find(1);
-    // $data = $find->saved_jobs;
-
-    // return $data;
 
 
 
-    // // get the data of the  savers  to a job    
+    // TEST EmployerProfile CREATE
+    // EmployerProfile::create([
+    //     'user_id' => 9,
+    //     'website' => 'imran.com',
+    //     'about' => 'imran dddddddddddddddddddddddddddd',
+    //     'facebook' => 'test',
+    //     'twitter' => 'test',
+
+    // ]);
+
+    // GET ALL employers
+    // return EmployerProfile::all();
 
 
-    // $find = Job::find(10);
-    // $data = $find->savers_candidates;
-
-    // return $data;
 
 
-    // // get the data of the  savers  to a job    
+    // TEST candidateProfile CREATE
+    // CandidateProfile::create([
+    //     'user_id' => 9,
+    //     'category_id' => 1,
+    //     'about' => 'imran dddddddddddddddddddddddddddd',
+    //     'birthdate' => '2000/05/06',
+    //     'cv' => 'test',
+    //     'experience' => 'test',
+    //     'qualification' => 'test',
+    //     'address' => 'test',
+    //     'gender' => 'male',
 
+    // ]);
+
+    // GET ALL candidates
+    // return CandidateProfile::all();
+
+
+
+
+    // TEST Blog CREATE
+    // Blog::create([
+    //     'user_id' => 9,
+    //     'title' => 'blog imran title',
+    //     'about' => 'imran dddddddddddddddddddddddddddd',
+    //     'slug' => 'dfsdfsdfsdfsdf-dgdfg-dfgdfgdfg',
+    //     'description' => 'test',
+    //     'image' => 'test',
+    // ]);
+
+    // GET ALL Blogs
+    // return Blog::all();
+
+
+
+    // // TEST Category CREATE
+    // Category::create([
+    //     'name' => "9falafel",
+    //     'slug' => 'dfsdfsdfsdfsdf-dgdfg-dfgdfgdfg',
+    //     'category_parent' => 1,
+    // ]);
+
+    // // GET ALL Categories
+    // return Category::all();
+
+
+
+
+    // TEST Job CREATE
+    // Job::create([
+    //     'employer_id' => 5,
+    //     'category_id' => 1,
+    //     'location_id' => 9,
+    //     'title' => 'Job imran title',
+    //     'description' => 'testtesttesttesttesttesttesttesttesttesttest',
+    //     'salary' => 999.99,
+    //     'type' => 'freelance',
+    //     'gender' => 'both',
+    //     'experience' => '10 years',
+    //     'qualification' => '1bac',
+    //     'address' => 'address oujda lol xd',
+    // ]);
+
+    // GET ALL Jobs
+    // return Job::all();
+
+
+
+
+    // // TEST Location CREATE
+    // Location::create([
+    //     'country' => 'morocco',
+    //     'city' => 'oujda',
+
+    // ]);
+
+    // // GET ALL Locations
+    // return Location::all();
+
+
+
+
+
+
+    // // TEST Skill CREATE
+    // Skill::create([
+    //     'title' => 'nodejs',
+    //     'slug' => 'node-js',
+
+    // ]);
+
+    // // GET ALL Skills
+    // return Skill::all();
 
 
 
