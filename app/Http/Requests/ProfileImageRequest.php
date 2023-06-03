@@ -22,7 +22,7 @@ class ProfileImageRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'ProfileAvatar' => 'required|image',
+            'ProfileAvatar' => 'required|image|max:2048',
         ];
     }
 }

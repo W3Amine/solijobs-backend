@@ -21,6 +21,7 @@ class UserRegister extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'role' => $data['role'],
+            'profileImage' => 'uploads/images/profileImages/defaultProfile.jpg'
         ]);
         // create the token
         $token = $user->createToken('main')->plainTextToken;

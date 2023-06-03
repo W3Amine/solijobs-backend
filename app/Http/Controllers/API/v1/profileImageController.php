@@ -26,6 +26,14 @@ class profileImageController extends Controller
             // Store the file using the Storage facade
             $path = Storage::disk('public')->putFileAs('uploads/images/profileImages', $file, $filename);
 
+            $AuthUserProfileImage = $request->user()->profileImage;
+            // check if the user profile is not the default 
+            // then check if the file path exist
+            //then delete old the file 
+            if ($AuthUserProfileImage !== 'uploads/images/profileImages/defaultProfile.jpg' && Storage::disk('public')->exists($AuthUserProfileImage)) {
+                Storage::disk('public')->delete($AuthUserProfileImage);
+            }
+
             //update the user ProfileImage in DB
             $request->user()->update(['profileImage' => $path]);
 
