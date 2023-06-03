@@ -9,8 +9,8 @@ use Illuminate\Support\Facades\Auth;
 
 class UserLogin extends Controller
 {
-    
-    
+
+
 
 
     public function login(LoginRequest $request)
@@ -25,10 +25,10 @@ class UserLogin extends Controller
         /** @var \App\Models\User $user */
         $user = Auth::user();
         $token = $user->createToken('main')->plainTextToken;
-        return response(compact('user', 'token'));
+        return response(compact('token'));
     }
 
 
 
-    
+
 }

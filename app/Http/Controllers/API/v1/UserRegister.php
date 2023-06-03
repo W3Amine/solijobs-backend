@@ -20,10 +20,11 @@ class UserRegister extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'role' => $data['role'],
         ]);
         // create the token
         $token = $user->createToken('main')->plainTextToken;
         //return user data and the token
-        return response(compact('user', 'token'));
+        return response(compact('token'));
     }
 }

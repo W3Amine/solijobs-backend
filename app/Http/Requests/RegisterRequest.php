@@ -32,7 +32,8 @@ class RegisterRequest extends FormRequest
                     ->letters()
                     ->symbols()
                     ->numbers()
-            ]
+            ],
+            'role' => ['required', 'integer', 'in:2,3'],
         ];
     }
 }
