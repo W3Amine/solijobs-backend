@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\v1\profileImageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\v1\UserLogin;
@@ -32,6 +33,8 @@ Route::prefix('v1')->group(function () {
 
         Route::post('/logout', [UserLogout::class, 'logout']);
 
+        // ROUTE used by FilePond to Upload profile image  #needs Authorization
+        Route::post('/profileImage', [profileImageController::class, 'upload']);
 
     });
 
@@ -39,5 +42,6 @@ Route::prefix('v1')->group(function () {
 
     Route::post('/login', [UserLogin::class, 'login']);
     Route::post('/register', [UserRegister::class, 'register']);
+
 
 });
