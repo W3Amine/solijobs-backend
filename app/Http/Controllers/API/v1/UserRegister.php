@@ -23,6 +23,15 @@ class UserRegister extends Controller
             'role' => $data['role'],
             'profileImage' => 'uploads/images/profileImages/defaultProfile.jpg'
         ]);
+
+
+        if ($data['role'] === 2) {
+            $EmployerProfile = $user->candidateProfile()->create();
+
+        } else if ($data['role'] === 3) {
+            $EmployerProfile = $user->employerProfile()->create();
+        }
+
         // create the token
         $token = $user->createToken('main')->plainTextToken;
         //return user data and the token

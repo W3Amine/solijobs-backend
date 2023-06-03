@@ -14,13 +14,13 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
             $table->unsignedBigInteger('category_id')->nullable();
-            $table->longText('about');
-            $table->string('gender', 20);
-            $table->date('birthdate');
-            $table->string('cv');
-            $table->string('experience', 60);
-            $table->string('qualification');
-            $table->string('address');
+            $table->longText('about')->nullable();
+            $table->string('gender', 20)->nullable();
+            $table->tinyInteger('age')->nullable();
+            $table->string('cv')->nullable();
+            $table->string('experience', 60)->nullable();
+            $table->string('qualification')->nullable();
+            $table->string('address')->nullable();
 
             $table->timestamps();
 

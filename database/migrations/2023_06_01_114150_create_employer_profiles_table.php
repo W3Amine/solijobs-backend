@@ -14,7 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->unsignedBigInteger('user_id')->unique();
             $table->string('website')->nullable();
-            $table->longText('about');
+            $table->longText('about')->nullable();
             $table->string('facebook')->nullable();
             $table->string('twitter')->nullable();
             $table->timestamps();

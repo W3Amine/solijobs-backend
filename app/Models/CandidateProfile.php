@@ -17,7 +17,7 @@ class CandidateProfile extends Model
         'category_id',
         'about',
         'gender',
-        'birthdate',
+        'age',
         'cv',
         'experience',
         'qualification',
