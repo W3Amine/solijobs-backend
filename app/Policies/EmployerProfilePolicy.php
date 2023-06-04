@@ -8,6 +8,13 @@ use Illuminate\Auth\Access\Response;
 
 class EmployerProfilePolicy
 {
+
+
+
+
+
+
+
     /**
      * Determine whether the user can view any models.
      */
@@ -29,7 +36,8 @@ class EmployerProfilePolicy
      */
     public function create(User $user): bool
     {
-        //
+        return true;
+
     }
 
     /**

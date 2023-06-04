@@ -30,7 +30,11 @@ Route::get('/', function () {
 Route::get('/test', function () {
 
 
+    // $data = EmployerProfile::find(8);
+    // $data->website = 'imran.com';
 
+    // $op = $data->save();
+    // return $op;
 
 
 });

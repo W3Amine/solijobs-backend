@@ -12,7 +12,8 @@ class SetAuthEmployerDataRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return true;
+        return $this->user()->can('getAuthEmployerData', $this->user());
+        ;
     }
 
     /**
@@ -23,17 +24,20 @@ class SetAuthEmployerDataRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string' , 'max:120'],
+            'name' => ['required', 'string', 'max:120'],
             'email' => [
                 'required',
                 'email',
                 Rule::unique('users')->ignore(auth()->user()->email, 'email'),
             ],
-            'phoneNumber' => ['email', 'unique:users,email'],
-            'website' => ['email', 'unique:users,email'],
-            'about' => ['email', 'unique:users,email'],
-            'facebook' => ['email', 'unique:users,email'],
-            'twitter' => ['email', 'unique:users,email'],
+            'phoneNumber' => [
+                'regex:/^(\+\d{1,3}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/',
+                Rule::unique('users')->ignore(auth()->user()->phoneNumber, 'phoneNumber'),
+            ],
+            'website' => ['url'],
+            'about' => ['string', 'max:500'],
+            'facebook' => ['url'],
+            'twitter' => ['url'],
         ];
     }
 }

@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\API\v1;
 
-use Illuminate\Http\Request;
 
+use Illuminate\Http\Request;
 use App\Models\EmployerProfile;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Gate;
 use App\Http\Requests\SetAuthEmployerDataRequest;
 
 class EmployerProfileController extends Controller
 {
-
 
     /**
      * Display a EmployerProfile data using the auth->user
@@ -20,6 +20,11 @@ class EmployerProfileController extends Controller
 
     public function GetAuthEmployerData(Request $request)
     {
+        // get user data
+        $user = auth()->user();
+        // check if authorize using Gate
+        $this->authorize('getAuthEmployerData', $user);
+
         return $request->user()->employerProfile;
     }
 
@@ -27,7 +32,30 @@ class EmployerProfileController extends Controller
 
     public function SetAuthEmployerData(SetAuthEmployerDataRequest $request)
     {
-        return $request->user()->employerProfile;
+        // authorization in the request
+        $requestedData = $request->validated();
+
+        $user = auth()->user();
+        $user->name = $requestedData['name'];
+        $user->email = $requestedData['email'];
+        $user->phoneNumber = $requestedData['phoneNumber'];
+        $userUpdate = $user->save();
+
+
+
+        $employerProfile = auth()->user()->employerProfile;
+        $employerProfile->website = $requestedData['website'];
+        $employerProfile->about = $requestedData['about'];
+        $employerProfile->facebook = $requestedData['facebook'];
+        $employerProfile->twitter = $requestedData['twitter'];
+        $employerProfileUpdate = $employerProfile->save();
+
+        if ($userUpdate && $employerProfileUpdate) {
+            // return 'Profile Updated Successfully 🤗';
+            return ['user' => $user, 'success' => 'Profile Updated Successfully 🤗'];
+        }
+
+
     }
 
 

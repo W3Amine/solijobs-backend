@@ -29,6 +29,12 @@ class User extends Authenticatable
     ];
 
 
+    // ROLES CONST THAT WILL BE AVAILABLE OVER THE WHOLE APP
+    const ADMIN = 0;
+    const MANAGER = 1;
+    const CANDIDATE = 2;
+    const EMPLOYER = 3;
+
     public $timestamps = true;
 
     /**
