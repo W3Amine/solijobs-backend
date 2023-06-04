@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers\API\v1;
 
-use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 use App\Models\EmployerProfile;
-use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\SetAuthEmployerDataRequest;
 
 class EmployerProfileController extends Controller
 {
@@ -24,7 +25,7 @@ class EmployerProfileController extends Controller
 
 
 
-    public function SetAuthEmployerData(Request $request)
+    public function SetAuthEmployerData(SetAuthEmployerDataRequest $request)
     {
         return $request->user()->employerProfile;
     }

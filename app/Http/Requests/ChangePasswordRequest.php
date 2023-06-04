@@ -23,13 +23,8 @@ class ChangePasswordRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'password' => [
-                'required',
-                Password::min(8)
-                    ->letters()
-                    ->symbols()
-                    ->numbers()
-            ],
+            'password' => ['required', 'current_password'], // i can check for the password equality of the auth->user 
+            //using current_password no need for hash::check :D
             'new_password' => [
                 'required',
                 'confirmed',
@@ -38,7 +33,7 @@ class ChangePasswordRequest extends FormRequest
                     ->symbols()
                     ->numbers()
             ],
-            
+
         ];
     }
 }
