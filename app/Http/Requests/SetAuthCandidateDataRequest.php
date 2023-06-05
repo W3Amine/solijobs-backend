@@ -37,7 +37,7 @@ class SetAuthCandidateDataRequest extends FormRequest
 
             'category_id' => ['numeric', 'exists:categories,id'],
             'about' => ['string', 'max:500'],
-            'gender' => ['string', 'max:10'],
+            'gender' => ['string', 'max:10', 'in:Male,Female'],
             'age' => ['numeric', 'max:140'],
             'experience' => ['string', 'max:20'],
             'qualification' => ['string', 'max:100'],

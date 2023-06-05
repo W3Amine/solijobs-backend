@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\v1\JobController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Resources\UserDataResource;
@@ -47,8 +48,14 @@ Route::prefix('v1')->group(function () {
         // ROUTE used by FilePond to Upload profile image  #needs Authorization
         Route::post('/profileImage', [profileImageController::class, 'upload']);
 
+        // ROUTE used by FilePond to Upload profile image  #needs Authorization
+        Route::post('/Candidate/UploadCv', [CandidateProfileController::class, 'UploadCv']);
+
+
         // ROUTE used to change the user Password # need auth:sanctum
         Route::post('/ChangePassword', [ChangePasswordController::class, 'index']);
+
+        Route::apiResource('/jobs', JobController::class);
 
 
     });

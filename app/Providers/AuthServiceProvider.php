@@ -37,5 +37,8 @@ class AuthServiceProvider extends ServiceProvider
             return $user->role === User::CANDIDATE;
         });
 
+        Gate::define('Upload_CV', function (User $user) {
+            return $user->role === User::CANDIDATE;
+        });
     }
 }

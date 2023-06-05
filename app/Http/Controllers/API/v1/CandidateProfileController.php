@@ -5,6 +5,8 @@ namespace App\Http\Controllers\API\v1;
 use Illuminate\Http\Request;
 use App\Models\CandidateProfile;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UploadCVRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\SetAuthCandidateDataRequest;
 
 class CandidateProfileController extends Controller
@@ -64,6 +66,43 @@ class CandidateProfileController extends Controller
 
 
 
+
+    // method used to upload the cv
+    public function UploadCv(UploadCVRequest $request)
+    {
+
+
+
+        if ($request->hasFile('CandidateCV')) {
+            $file = $request->file('CandidateCV');
+
+            // Generate a unique name for the file
+            $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+
+            // Store the file using the Storage facade
+            $path = Storage::disk('public')->putFileAs('uploads/Documents/CVs', $file, $filename);
+
+            $AuthUserCV = $request->user()->CandidateProfile->cv;
+            // then check if the file path exist
+            // then delete old the file 
+            if ($AuthUserCV !== null && Storage::disk('public')->exists($AuthUserCV)) {
+                Storage::disk('public')->delete($AuthUserCV);
+            }
+
+            //update the user CV in DB
+            $request->user()->CandidateProfile->update(['cv' => $path]);
+
+            // Retrieve the public URL for the uploaded file
+            $url = Storage::disk('public')->url($path);
+            // Perform any additional logic with the file or its URL
+
+            return response()->json(['url' => $url]);
+        }
+
+        return "";
+
+
+    }
 
 
     /**

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\API\v1;
 
-use App\Http\Controllers\Controller;
 use App\Models\Job;
 use Illuminate\Http\Request;
+use App\Http\Requests\jobRequest;
+use App\Http\Controllers\Controller;
 
 class JobController extends Controller
 {
@@ -27,9 +28,28 @@ class JobController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(jobRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        auth()->user()->employerProfile->jobs()->create([
+            'title' => $validatedData['title'],
+            'category_id' => $validatedData['category_id'],
+            'location_id' => $validatedData['location_id'],
+            'description' => $validatedData['description'],
+            'salary' => $validatedData['salary'],
+            'type' => $validatedData['type'],
+            'gender' => $validatedData['gender'],
+            'experience' => $validatedData['experience'],
+            'qualification' => $validatedData['qualification'],
+            'address' => $validatedData['address'],
+        ]);
+
+
+        return "The Job Created Successfully Successfully 🥳";
+
+
+
     }
 
     /**
