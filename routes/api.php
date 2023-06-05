@@ -6,9 +6,11 @@ use App\Http\Resources\UserDataResource;
 use App\Http\Controllers\API\v1\UserLogin;
 use App\Http\Controllers\API\v1\UserLogout;
 use App\Http\Controllers\API\v1\UserRegister;
+use App\Http\Controllers\API\v1\CategoryController;
 use App\Http\Controllers\API\v1\profileImageController;
 use App\Http\Controllers\API\v1\ChangePasswordController;
 use App\Http\Controllers\API\v1\EmployerProfileController;
+use App\Http\Controllers\API\v1\CandidateProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +39,8 @@ Route::prefix('v1')->group(function () {
         Route::get('/EmployerProfile/GetEmployerData', [EmployerProfileController::class, 'GetAuthEmployerData']);
         Route::post('/EmployerProfile/SetEmployerData', [EmployerProfileController::class, 'SetAuthEmployerData']);
 
+        Route::get('/CandidateProfile/GetCandidateData', [CandidateProfileController::class, 'GetAuthCandidateData']);
+        Route::post('/CandidateProfile/SetCandidateData', [CandidateProfileController::class, 'SetAuthCandidateData']);
 
         Route::post('/logout', [UserLogout::class, 'logout']);
 
@@ -53,6 +57,9 @@ Route::prefix('v1')->group(function () {
 
     Route::post('/login', [UserLogin::class, 'login']);
     Route::post('/register', [UserRegister::class, 'register']);
+
+
+    Route::apiResource('/categories', CategoryController::class);
 
 
 });

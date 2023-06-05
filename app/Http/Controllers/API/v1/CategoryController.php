@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\API\v1;
 
-use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Resources\AllCategoriesResource;
 
 class CategoryController extends Controller
 {
@@ -13,16 +14,16 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        //
+        return  AllCategoriesResource::collection(Category::all());
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+    // public function create()
+    // {
+    //     //
+    // }
 
     /**
      * Store a newly created resource in storage.
@@ -43,10 +44,10 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Category $category)
-    {
-        //
-    }
+    // public function edit(Category $category)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.

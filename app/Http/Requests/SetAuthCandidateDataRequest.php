@@ -5,14 +5,15 @@ namespace App\Http\Requests;
 use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class SetAuthEmployerDataRequest extends FormRequest
+class SetAuthCandidateDataRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return $this->user()->can('GetAndSetAuthEmployerData', $this->user());
+        return $this->user()->can('GetAndSetAuthCandidateData', $this->user());
+
     }
 
     /**
@@ -33,10 +34,14 @@ class SetAuthEmployerDataRequest extends FormRequest
                 'regex:/^(\+\d{1,3}\s?)?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}$/',
                 Rule::unique('users')->ignore(auth()->user()->phoneNumber, 'phoneNumber'),
             ],
-            'website' => ['url'],
+
+            'category_id' => ['numeric', 'exists:categories,id'],
             'about' => ['string', 'max:500'],
-            'facebook' => ['url'],
-            'twitter' => ['url'],
+            'gender' => ['string', 'max:10'],
+            'age' => ['numeric', 'max:140'],
+            'experience' => ['string', 'max:20'],
+            'qualification' => ['string', 'max:100'],
+            'address' => ['string', 'max:200'],
         ];
     }
 }

@@ -28,18 +28,14 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('getAuthEmployerData', function (User $user) {
-            return $user->role === User::EMPLOYER;
-        });
-        Gate::define('SetAuthEmployerData', function (User $user) {
+
+        Gate::define('GetAndSetAuthEmployerData', function (User $user) {
             return $user->role === User::EMPLOYER;
         });
 
-        Gate::define('getAuthCandidateData', function (User $user) {
+        Gate::define('GetAndSetAuthCandidateData', function (User $user) {
             return $user->role === User::CANDIDATE;
         });
-        Gate::define('SetAuthCandidateData', function (User $user) {
-            return $user->role === User::CANDIDATE;
-        });
+
     }
 }

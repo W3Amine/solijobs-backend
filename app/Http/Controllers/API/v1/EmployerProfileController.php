@@ -23,7 +23,7 @@ class EmployerProfileController extends Controller
         // get user data
         $user = auth()->user();
         // check if authorize using Gate
-        $this->authorize('getAuthEmployerData', $user);
+        $this->authorize('GetAndSetAuthEmployerData', $user);
 
         return $request->user()->employerProfile;
     }
