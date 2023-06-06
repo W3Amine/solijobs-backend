@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('jobs', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('employer_id');
-            $table->unsignedBigInteger('category_id')->nullable();
+          //  $table->unsignedBigInteger('category_id')->nullable();
             $table->unsignedBigInteger('location_id')->nullable();
             $table->string('title');
             $table->longText('description');
@@ -23,6 +23,8 @@ return new class extends Migration {
             $table->string('gender');
             $table->string('experience')->nullable();
             $table->string('qualification')->nullable();
+            $table->string('country', 100);
+            $table->string('city' , 100);
             $table->string('address')->nullable();
 
             $table->timestamps();
@@ -37,9 +39,9 @@ return new class extends Migration {
                 ->references('id')->on('categories')
                 ->onDelete('SET NULL');
 
-            $table->foreign('location_id')
-                ->references('id')->on('locations')
-                ->onDelete('SET NULL');
+            // $table->foreign('location_id')
+            //     ->references('id')->on('locations')
+            //     ->onDelete('SET NULL');
 
 
 

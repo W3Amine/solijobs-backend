@@ -32,18 +32,7 @@ class JobController extends Controller
     {
         $validatedData = $request->validated();
 
-        auth()->user()->employerProfile->jobs()->create([
-            'title' => $validatedData['title'],
-            'category_id' => $validatedData['category_id'],
-            'location_id' => $validatedData['location_id'],
-            'description' => $validatedData['description'],
-            'salary' => $validatedData['salary'],
-            'type' => $validatedData['type'],
-            'gender' => $validatedData['gender'],
-            'experience' => $validatedData['experience'],
-            'qualification' => $validatedData['qualification'],
-            'address' => $validatedData['address'],
-        ]);
+        auth()->user()->employerProfile->jobs()->create($request->validated());
 
 
         return "The Job Created Successfully Successfully 🥳";

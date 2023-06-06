@@ -24,14 +24,16 @@ class jobRequest extends FormRequest
         return [
             'title' => 'required|string|max:255',
             'category_id' => 'required|exists:categories,id',
-            'location_id' => 'required|exists:locations,id',
+            // 'location_id' => 'required|exists:locations,id',
             'description' => 'required|string',
-            'salary' => 'required|numeric|min:0',
+            'salary' => 'nullable|numeric|min:0',
             'type' => 'required|string',
             'gender' => 'required|in:Male,Female,Both',
-            'experience' => 'required|integer|min:0',
-            'qualification' => 'required|string',
-            'address' => 'required|string',
+            'experience' => 'nullable|string|max:40',
+            'qualification' => 'nullable|string|max:100',
+            'address' => 'required|string|max:200',
+            'country' => 'required|string|max:40',
+            'city' => 'required|string|max:40',
         ];
     }
 }

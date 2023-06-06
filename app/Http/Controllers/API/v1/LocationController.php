@@ -8,6 +8,27 @@ use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
+
+
+
+    // get All countries
+    public function Countries(Request $request)
+    {
+        $countries = Location::distinct('country')->pluck('country');
+
+        return response()->json($countries);
+    }
+
+    // get all cities of a counry :D  and the location id  of the location //model
+    public function ContryCities(Request $request, $country)
+    {
+        $locations = Location::where('country', $country)->pluck('city', 'id');
+
+        return response()->json($locations);
+    }
+
+
+
     /**
      * Display a listing of the resource.
      */

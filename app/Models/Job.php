@@ -13,7 +13,7 @@ class Job extends Model
     protected $fillable = [
         'employer_id',
         'category_id',
-        'location_id',
+        // 'location_id',
         'title',
         'description',
         'salary',
@@ -23,6 +23,8 @@ class Job extends Model
         'experience',
         'qualification',
         'address',
+        'country',
+        'city',
     ];
 
     public $timestamps = true;

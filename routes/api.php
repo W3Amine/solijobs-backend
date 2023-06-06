@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\API\v1\JobController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Resources\UserDataResource;
 use App\Http\Controllers\API\v1\UserLogin;
 use App\Http\Controllers\API\v1\UserLogout;
 use App\Http\Controllers\API\v1\UserRegister;
+use App\Http\Controllers\API\v1\JobController;
 use App\Http\Controllers\API\v1\CategoryController;
+use App\Http\Controllers\API\v1\LocationController;
 use App\Http\Controllers\API\v1\profileImageController;
 use App\Http\Controllers\API\v1\ChangePasswordController;
 use App\Http\Controllers\API\v1\EmployerProfileController;
@@ -68,5 +69,12 @@ Route::prefix('v1')->group(function () {
 
     Route::apiResource('/categories', CategoryController::class);
 
+
+    Route::prefix('locations')->group(function () {
+
+        Route::get('/countries', [LocationController::class, 'Countries']);
+
+        Route::get('/{country}/cities', [LocationController::class, 'ContryCities']);
+    });
 
 });
