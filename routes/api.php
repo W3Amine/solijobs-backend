@@ -56,8 +56,18 @@ Route::prefix('v1')->group(function () {
         // ROUTE used to change the user Password # need auth:sanctum
         Route::post('/ChangePassword', [ChangePasswordController::class, 'index']);
 
-        Route::apiResource('/jobs', JobController::class);
+        // Route::apiResource('/jobs', JobController::class);
 
+        Route::prefix('/jobs')->group(function () {
+
+            Route::post('/', [JobController::class, 'store']);
+            Route::get('/EmployerJobs', [JobController::class, 'GetEmployerJobs']);
+            Route::get('/GetUnactiveJobs', [JobController::class, 'GetUnactiveJobs']);
+            Route::get('/GetActiveJobs', [JobController::class, 'GetActiveJobs']);
+            Route::get('/GetAppliedJobs', [JobController::class, 'GetAppliedJobs']);
+            Route::get('/GetSavedJobs', [JobController::class, 'GetSavedJobs']);
+
+        });
 
     });
 
