@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers\API\v1;
 
-use App\Http\Resources\SingleJobResource;
 use App\Models\Job;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\jobRequest;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use App\Http\Resources\SingleJobResource;
 
 class JobController extends Controller
 {
@@ -18,6 +19,30 @@ class JobController extends Controller
     public function index()
     {
         //
+    }
+
+
+
+
+
+
+    public function GetJobDetails(Request $request, $id)
+    {
+
+        $jobDetails = DB::table('jobs')
+            ->join('employer_profiles', 'jobs.employer_id', '=', 'employer_profiles.id')
+            ->join('users', 'employer_profiles.user_id', '=', 'users.id')
+            ->select('jobs.*', 'employer_profiles.*', 'users.name', 'users.email', 'users.phoneNumber', 'users.profileImage')
+            ->where('jobs.id', $id)->get();
+
+        if (count($jobDetails) > 0) {
+            $jobDetails[0]->profileImage = Storage::disk('public')->url($jobDetails[0]->profileImage);
+            return $jobDetails;
+        } else {
+            abort(404);
+        }
+
+
     }
 
 
@@ -106,6 +131,20 @@ class JobController extends Controller
         if (isset($request->type)) {
             $jobs->where('type', $request->type);
         }
+
+        if (isset($request->category)) {
+            $jobs->where('jobs.category_id', $request->category);
+        }
+
+        if (isset($request->search)) {
+            $jobs->where('jobs.title', 'like', "%" . $request->search . "%");
+        }
+
+
+        if (isset($request->country)) {
+            $jobs->where('jobs.country', 'like', "%" . $request->country . "%");
+        }
+
 
         $data = $jobs->orderBy('created_at', 'desc')->paginate($request->show);
         return SingleJobResource::collection($data);

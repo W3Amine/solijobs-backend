@@ -87,4 +87,8 @@ Route::prefix('v1')->group(function () {
         Route::get('/{country}/cities', [LocationController::class, 'ContryCities']);
     });
 
+    Route::get('jobs/GetJobDetails/{id}', [JobController::class, 'GetJobDetails']);
+
+
+
 });
