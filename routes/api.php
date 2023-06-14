@@ -69,7 +69,8 @@ Route::prefix('v1')->group(function () {
             Route::get('/GetActiveJobs', [JobController::class, 'GetActiveJobs']);
             Route::get('/GetAppliedJobs', [JobController::class, 'GetAppliedJobs']);
             Route::get('/GetSavedJobs', [JobController::class, 'GetSavedJobs']);
-            Route::get('/GetJobAplicants/{jobId}', [JobController::class, 'GetJobAplicants']);
+            // Route::get('/GetJobAplicants/{jobId}', [JobController::class, 'GetJobAplicants']);
+            Route::get('GetJobApplyers/{jobId}', [JobController::class, 'GetJobApplyers']);
 
         });
 
@@ -97,8 +98,9 @@ Route::prefix('v1')->group(function () {
 
 
 
-    Route::get('GetJobAplicants/{jobId}', [JobController::class, 'GetJobAplicants']);
-
+    Route::prefix('/jobs')->group(function () {
+        Route::get('/GetActiveJobs', [JobController::class, 'GetActiveJobs']);
+    });
 
 
 

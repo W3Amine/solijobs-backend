@@ -207,7 +207,7 @@ class JobController extends Controller
 
 
 
-    public function GetJobAplicants($jobId)
+    public function GetJobApplyers($jobId)
     {
         // $applyers = Job::with(['applicants_candidates.user', 'user'])->where('id', $jobId)->get();
 
