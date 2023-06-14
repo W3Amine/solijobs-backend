@@ -32,6 +32,8 @@ use App\Http\Controllers\API\v1\CandidateProfileController;
 
 Route::prefix('v1')->group(function () {
 
+
+
     Route::middleware('auth:sanctum')->group(function () {
 
         Route::get('/user', function (Request $request) {
@@ -43,6 +45,7 @@ Route::prefix('v1')->group(function () {
 
         Route::get('/CandidateProfile/GetCandidateData', [CandidateProfileController::class, 'GetAuthCandidateData']);
         Route::post('/CandidateProfile/SetCandidateData', [CandidateProfileController::class, 'SetAuthCandidateData']);
+
 
         Route::post('/logout', [UserLogout::class, 'logout']);
 
@@ -66,6 +69,7 @@ Route::prefix('v1')->group(function () {
             Route::get('/GetActiveJobs', [JobController::class, 'GetActiveJobs']);
             Route::get('/GetAppliedJobs', [JobController::class, 'GetAppliedJobs']);
             Route::get('/GetSavedJobs', [JobController::class, 'GetSavedJobs']);
+            Route::get('/GetJobAplicants/{jobId}', [JobController::class, 'GetJobAplicants']);
 
         });
 
@@ -88,6 +92,13 @@ Route::prefix('v1')->group(function () {
     });
 
     Route::get('jobs/GetJobDetails/{id}', [JobController::class, 'GetJobDetails']);
+
+    Route::get('CandidateProfile/CandidateData/{id}', [CandidateProfileController::class, 'GetCandidateDataById']);
+
+
+
+    Route::get('GetJobAplicants/{jobId}', [JobController::class, 'GetJobAplicants']);
+
 
 
 

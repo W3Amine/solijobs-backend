@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API\v1;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\CandidateProfile;
 use App\Http\Controllers\Controller;
@@ -30,6 +31,33 @@ class CandidateProfileController extends Controller
 
         return $request->user()->candidateProfile;
     }
+
+
+
+    public function GetCandidateDataById($id)
+    {
+
+
+        $user = User::with(['candidateProfile'])->where('id', $id)->get();
+
+
+        $userArray = $user->toArray();
+
+        if (isset($userArray[0])) {
+            if (isset($userArray[0]['profileImage'])) {
+                $userArray[0]['profileImage'] = Storage::disk('public')->url($userArray[0]['profileImage']);
+            }
+
+            if (isset($userArray[0]['candidate_profile']['cv'])) {
+                $userArray[0]['candidate_profile']['cv'] = Storage::disk('public')->url($userArray[0]['candidate_profile']['cv']);
+            }
+            return $userArray;
+        } else {
+            abort(404);
+        }
+
+    }
+
 
 
 

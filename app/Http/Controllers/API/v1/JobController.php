@@ -207,6 +207,23 @@ class JobController extends Controller
 
 
 
+    public function GetJobAplicants($jobId)
+    {
+        // $applyers = Job::with(['applicants_candidates.user', 'user'])->where('id', $jobId)->get();
+
+        $applyers = Job::select('candidate_profiles.id', 'candidate_profiles.user_id', 'candidate_profiles.experience', 'candidate_profiles.age', 'users.name', 'users.profileImage')
+            ->join('jobs_applications', 'jobs.id', '=', 'jobs_applications.job_id')
+            ->join('candidate_profiles', 'jobs_applications.candidate_profile_id', '=', 'candidate_profiles.id')
+            ->join('users', 'candidate_profiles.user_id', '=', 'users.id')
+            ->where('jobs.id', $jobId)
+            ->get();
+        return $applyers;
+    }
+
+
+
+
+
     /**
      * Show the form for creating a new resource.
      */
