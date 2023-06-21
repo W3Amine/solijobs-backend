@@ -64,6 +64,7 @@ Route::prefix('v1')->group(function () {
         Route::prefix('/jobs')->group(function () {
 
             Route::post('/', [JobController::class, 'store']);
+            Route::delete('/{job}', [JobController::class, 'destroy']);
             Route::get('/EmployerJobs', [JobController::class, 'GetEmployerJobs']);
             Route::get('/GetUnactiveJobs', [JobController::class, 'GetUnactiveJobs']);
             Route::get('/GetActiveJobs', [JobController::class, 'GetActiveJobs']);
@@ -71,6 +72,9 @@ Route::prefix('v1')->group(function () {
             Route::get('/GetSavedJobs', [JobController::class, 'GetSavedJobs']);
             // Route::get('/GetJobAplicants/{jobId}', [JobController::class, 'GetJobAplicants']);
             Route::get('GetJobApplyers/{jobId}', [JobController::class, 'GetJobApplyers']);
+            Route::post('/saveJob', [JobController::class, 'saveJob']);
+            Route::post('/applyjob', [JobController::class, 'applyjob']);
+            Route::post('/Activatejob', [JobController::class, 'Activatejob']);
 
         });
 

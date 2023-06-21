@@ -248,6 +248,10 @@ class JobController extends Controller
 
     }
 
+
+
+
+
     /**
      * Display the specified resource.
      */
@@ -272,11 +276,57 @@ class JobController extends Controller
         //
     }
 
+
+
+    ####################################################################
+#################### ACTIONS ########################################
+####################################################################
+
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Job $job)
     {
-        //
+        //dd("fff");
+        return $job->delete();
     }
+
+
+
+
+
+    public function saveJob(Request $request)
+    {
+        //dd("fff");
+        return auth()->user()->candidateProfile->saved_jobs()->attach($request->job_id);
+
+    }
+
+
+
+    public function applyjob(Request $request)
+    {
+        //dd("fff");
+        return auth()->user()->candidateProfile->applied_jobs()->attach($request->job_id);
+        ;
+    }
+
+
+    public function Activatejob(Request $request)
+    {
+        //dd("fff");
+        // return auth()->user()->candidateProfile->applied_jobs()->attach($request->job_id);
+
+        $job = Job::FindOrFail($request->job_id);
+        $job->is_active = true;
+        $job->save();
+
+    }
+
+
+
+####################################################################
+#################### ACTIONS ########################################
+####################################################################
+
 }
